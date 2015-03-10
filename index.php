@@ -28,34 +28,7 @@ $statement = $gateway->getWines();
             echo '<p>'.$message.'</p>';
         }
         ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Wine</th>
-                    <th>Description</th>
-                    <th>Year</th>
-                    <th>Temperature</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $row = $statement->fetch(PDO::FETCH_ASSOC);
-                while ($row) {
-
-                    
-                    echo '<td>' . $row['wine'] . '</td>';
-                    echo '<td>' . $row['description'] . '</td>';
-                    echo '<td>' . $row['year'] . '</td>';
-                    echo '<td>' . $row['temperature'] . '</td>';
-                    echo '<td>' . $row['type'] . '</td>';
-                    echo '</tr>';
-                    
-                    $row = $statement->fetch(PDO::FETCH_ASSOC);
-                }
-                ?>
-            </tbody>
-        </table>
+            <p>Landing Page</p>
          </div>
        </body>
 </html>

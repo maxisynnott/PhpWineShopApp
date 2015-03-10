@@ -1,69 +1,50 @@
 <?php
-require_once 'Wine.php';
-require_once 'Connection.php';
-require_once 'WineTableGateway.php';
-
-require 'ensureUserLoggedIn.php';
-
-$connection = Connection::getInstance();
-$gateway = new WineTableGateway($connection);
-
-$statement = $gateway->getWines();
-       
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <meta charset="UTF-8">
+        <?php require "styles.php" ?>
         <script type="text/javascript" src="js/wine.js"></script>
         <title></title>
     </head>
     <body>
-        <div class ="container">
         <?php require 'toolbar.php' ?>
-        <?php
-        if (isset($message)) {
-            echo '<p>'.$message.'</p>';
-        }
-        ?>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Wine</th>
-                    <th>Description</th>
-                    <th>Year</th>
-                    <th>Temperature</th>
-                    <th>Type</th>
-                   
-                </tr>
-            </thead>
-            <tbody>
-                 <?php
-                $row = $statement->fetch(PDO::FETCH_ASSOC);
-                while ($row) {
-                    
-                    
-                    echo '<td>' . $row['wine'] . '</td>';
-                    echo '<td>' . $row['description'] . '</td>';
-                    echo '<td>' . $row['year'] . '</td>';
-                    echo '<td>' . $row['temperature'] . '</td>';
-                    echo '<td>' . $row['type'] . '</td>';
-                    echo '<td>'
-                    
-                    . '<a href="viewWine.php?id='.$row['id'].'"><button type="button" class="btn btn-warning">View</button></a> '
-                    . '<a href="editWineForm.php?id='.$row['id'].'"><button type="button" class="btn btn-info">Edit</button></a> '
-                    . '<a class="deleteWine" href="deleteWine.php?id='.$row['id'].'"><button type="button" class="btn btn-danger">Delete</button></a> '
-                    . '</td>';
-                    echo '</tr>'; 
-                    
-                    $row = $statement->fetch(PDO::FETCH_ASSOC);
-                    
-                }
-                ?>
-            </tbody>
-        </table>
-        <p><a href="createWineForm.php"><button type="button" class="btn btn-default">Add A Wine</button></a></p>
+        <?php require 'header.php' ?>
+        <?php require 'mainMenu.php' ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Wines</h3>
+                    <p>
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    </p>
+                    <h3>Winery</h3>
+                    <p>
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h3>Comments</h3>
+                    <p>
+                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    </p>
+                </div>
+            </div>
         </div>
-        </body>
+        <?php require 'footer.php'; ?>
+        <?php require 'scripts.php'; ?>
+    </body>
 </html>
