@@ -1,0 +1,25 @@
+
+body{
+	padding-top: 70px;
+}
+
+footer{
+	padding: 2em;
+	margin: 3em 0;
+	border-top: 1px solid #621614;
+	color: #999;
+	text-align: center;
+}
+
+
+/* gives spacing from the text and the images */
+.img-responsive {
+	margin: 0 0 1px 1px;
+
+
+/* this for making the button custom later */
+.btn-ifo{
+
+}
+
+
