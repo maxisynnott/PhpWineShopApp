@@ -37,9 +37,9 @@ class WineryTableGateway {
         return $statement;
     }
     
-    public function insertWinery($n, $a, $cn, $cp, $e, $wa){
+    public function insertWinery($n, $a, $cn, $pn, $e, $wa){
         $sqlQuery = "INSERT INTO winery ".
-                "(Name, Address, ContactName, ContactPhone, Email, WebAddress) ".
+                "(Name, Address, ContactName, PhoneNumber, Email, WebAddress) ".
                 "VALUES (:Name, :Address, :ContactName, :Phone, :Email, :WebAddress)";
         
         $statement = $this->connection->prepare($sqlQuery);
@@ -47,7 +47,7 @@ class WineryTableGateway {
             "Name" => $n,
             "Address" => $a,
             "ContactName" => $cn,
-            "ContactPhone" => $cp,
+            "PhoneNumber" => $pn,
             "Email" => $e,
             "WebAddress" => $wa
         );
@@ -86,7 +86,7 @@ class WineryTableGateway {
                 "Name = :Name, ".
                 "Address = :Address, ".
                 "ContactName = :ContactName, ".
-                "ContactPhone = :ContactPhone, ".
+                "PhoneNumber = :PhoneNumber, ".
                 "Email = :Email, " .
                 "WebAddress = :WebAddress " .
                 "WHERE Winery_ID = :Winery_ID";
@@ -97,7 +97,7 @@ class WineryTableGateway {
             "Name" => $n,
             "Address" => $a,
             "ContactName" => $cn,
-            "ContactPhone" => $cp,
+            "PhoneNumber" => $pn,
             "Email" => $e,
             "WebAddress" => $wa
                 

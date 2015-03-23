@@ -1,64 +1,47 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <div class ="container">
-        <?php
-        if (!isset($username)) {
-            $username = '';
-        }
-        ?>
-        <form action="checkLogin.php" method="POST">
-            <table border="0">
-                <tbody>
-                    <tr>
-                        <td>Username</td>
-                        <td>
-                            <input type="text"
-                                   name="username"
-                                   value="<?php echo $username; ?>" />
-                            <span id="usernameError" class="error">
-                                <?php
-                                if (isset($errorMessage) && isset($errorMessage['username'])) {
-                                    echo $errorMessage['username'];
-                                }
-                                ?>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td>
-                            <input type="password" name="password" value="" />
-                            <span id="passwordError" class="error">
-                                <?php
-                                if (isset($errorMessage) && isset($errorMessage['password'])) {
-                                    echo $errorMessage['password'];
-                                }
-                                ?>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input class="btn btn-success" type="submit" value="Login" name="login"/>
-                            <input class="btn btn-primary" type="button"
-                                   value="Register"
-                                   name="register"
-                                   onclick="document.location.href = 'register.php'"
-                                   />
-                            <input  class="btn btn-primary" type="button" value="Forgot Passward" name="forgot" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+<?php
+require_once 'Connection.php';
+require_once 'UserTableGateway.php';
+require_once 'lib/password.php';
 
-        </form>
-        </div>
-    </body>
-</html>
+$connection = Connection::getInstance();
+
+$gateway = new UserTableGateway($connection);
+
+$id = session_id();
+if ($id == "") {
+    session_start();
+}
+
+$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+$errorMessage = array();
+if ($username === FALSE || $username === '') {
+    $errorMessage['username'] = 'Username must not be blank<br/>';
+}
+
+if ($password === FALSE || $password === '') {
+    $errorMessage['password'] = 'Password must not be blank<br/>';
+}
+
+if (empty($errorMessage)) {
+    $statement = $gateway->getUserByUsername($username);
+    if ($statement->rowCount() != 1) {
+        $errorMessage['username'] = 'Username not registered<br/>';
+    }
+    else if ($statement->rowCount() == 1) {
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        $hash = $row['password'];
+        if (!password_verify($password, $hash)) {
+            $errorMessage['password'] = 'Invalid password<br/>';
+        }
+    }
+}
+
+if (empty($errorMessage)) {
+    $_SESSION['username'] = $username;
+    header('Location: home.php');
+}
+else {
+    require 'loginForm.php';
+}

@@ -3,11 +3,40 @@ $session_id = session_id();
 if ($session_id == "") {
     session_start();
 }
-if (isset($_SESSION['username'])) {
-    echo '<p><a href="home.php"><button type="button" class="btn btn-default">Home</button></a></p>';
-    echo '<p><a href="logout.php"><button type="button" class="btn btn-default">Logout</button></a></p>';
-}
-else {
-    echo '<p><a href="index.php"><button type="button" class="btn btn-default">Home</button></a></p>';
-    echo '<p><a href="login.php"><button type="button" class="btn btn-default">Login</button></a></p>';
-}
+?>
+
+     <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+        
+            
+            
+            <a class="navbar-brand" href="index.php">UnWined</a>
+                 
+            
+        <div class="collapse navbar-collapse" id="collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <?php if (isset($_SESSION['username'])) { ?>
+                <li><a href="home.php">Home</a></li>
+            <?php } else { ?>
+                <li><a href="index.php">Home</a></li>
+            <?php } ?>
+                <li><a href="index.php">About</a></li>
+                <li><a href="index.php"  data-toggle="modal">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <?php if (isset($_SESSION['username'])) { ?>
+                <li><a href="index.php">Logout</a></li>
+            <?php } else { ?>
+                <li><a href="login.php">Login</a></li>
+            <?php } ?>
+            </ul>
+        </div>
+        </div>
+    </div>
+</nav>

@@ -24,21 +24,47 @@ class WineTableGateway {
         return $statement;
     }
     
-    public function getWineById($id){
+    public function getWinesByWineryId($wineryId){
         
-        $sqlQuery = "SELECT * FROM wines WHERE id = :id";
+        $sqlQuery = "SELECT w.*, w.wine as wineryName
+            FROM wines w
+            LEFT JOIN winerys w on w.id = w.winery_id
+            WHERE w.winery_id = :wineryID";
         
+        $params = array(
+            'wineryId' => $wineryId
+        );
+                
+        $statement = $this->connection->prepare($sqlQuery);
+        $status = $statement->execute($params);
+
+        if (!$status) {
+            die("Could not retrieve wines");
+        }
+
+        return $statement;
+    }
+    
+    
+    public function getWineById($id) {
+        // execute a query to get the user with the specified id
+        $sqlQuery =
+                "SELECT w.*, w.wine AS wineryName
+                 FROM wines w
+                 LEFT JOIN winerys w ON w.id = p.winery_id
+                 WHERE w.id = :id";
+
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
             "id" => $id
         );
-        
+
         $status = $statement->execute($params);
-        
+
         if (!$status) {
-            die("could not retrieve wines");
+            die("Could not retrieve wines");
         }
-        
+
         return $statement;
     }
     
@@ -102,7 +128,8 @@ class WineTableGateway {
               "description" => $d,
               "year" => $y,
               "temperature" => $te,
-              "type" => $t,        
+              "type" => $t,     
+              "winery_id" => $wId
     );
 
         $status = $statement->execute($params);

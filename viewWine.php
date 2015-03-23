@@ -1,7 +1,9 @@
 <?php
-require_once 'Wine.php';
 require_once 'Connection.php';
 require_once 'WineTableGateway.php';
+require_once 'CommentTableGateway.php';
+
+
 
 $id = session_id();
 if ($id == "") {
@@ -16,22 +18,28 @@ if (!isset($_GET) || !isset($_GET['id'])) {
 $id = $_GET['id'];
 
 $connection = Connection::getInstance();
-$gateway = new WineTableGateway($connection);
+$wineGateway = new WineTableGateway($connection);
+$commentGateway = new CommentTableGateway($connection);
 
-$statement = $gateway->getWineById($id);
+$wines = $wineGateway->getWineById($id);
+$comments = $commentGateway->getCommentById($id);
 ?>
 
+<!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <?php require "styles.php" ?>
         <meta charset="UTF-8">
         <script type="text/javascript" src="js/wine.js"></script>
         <title></title>
     </head>
     <body>
-        <div class ="container">
         <?php require 'toolbar.php' ?>
-        <?php
+        <?php require 'header.php' ?>
+        <?php require 'mainMenu.php' ?>
+        <div class="container">
+            <h2>View Wine Details</h2>
+            <?php
         if (isset($message)) {
             echo '<p>'.$message.'</p>';
         }
@@ -70,6 +78,8 @@ $statement = $gateway->getWineById($id);
                      Delete Wine</button></a>
         </p>
         </div>
+        <?php require 'footer.php'; ?>
+        <?php require 'scripts.php'; ?>
     </body>
 </html>
 

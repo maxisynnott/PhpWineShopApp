@@ -1,5 +1,4 @@
 <?php
-require_once 'Wine.php';
 require_once 'Connection.php';
 require_once 'WineTableGateway.php';
 
@@ -16,19 +15,85 @@ $statement = $gateway->getWines();
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <?php require "styles.php" ?>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Unwinned</title>
     </head>
     <body>
         <div class ="container">
         <?php require 'toolbar.php' ?>
-        <?php 
-        if (isset($message)) {
-            echo '<p>'.$message.'</p>';
-        }
-        ?>
-            <p>Landing Page</p>
-         </div>
+        <?php require 'header.php' ?>
+        <?php require 'mainMenu.php' ?>
+            `       <div class = "jumbotron">
+                            <div class = "container">
+                            <center>
+                            <h6 class="banner">UnWined</h6>
+                            <h7 class="bannersub">With 27 years outstanding service, let us find the wine for you!<h7>
+                               
+                                    <p><a href="login.php" class="btn btn-default loginbt">Sign Up</a></p></center>
+                                   
+                            </div>
+                    </div>
+                     </header>
+
+                    <!-- row 2 -->
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-10S">
+                                <h1> We have a drinking problem</h1>
+                                <p>At Unwinned we like to give you the best quailty wines we can, at the best prices we can, and we offer our memebers many different stuff. </p>
+                        </div>
+                    </div>
+
+                <!-- row 3 -->
+                    <div class="row">
+                        <div class="col-md-3 col-xs-6">
+                            <p><img src="img/wine1.png" alt="" class="img-responsive img-thumbnail"></p>
+                            <h4>we really like wine</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <p><a href="login.php" class="btn btn-default">Read more </a></p>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <p><img src="img/wine2.png" alt="" class="img-responsive img-thumbnail"></p>
+                            <h4>we really like wine</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                            <p><a href="login.php" class="btn btn-default">Read more </a></p>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <p><img src="img/wine1.png" alt="" class="img-responsive img-thumbnail"></p>
+                            <h4>we really like wine</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <p><a href="login.php" class="btn btn-default">Read more </a></p>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <p><img src="img/wine2.png" alt="" class="img-responsive img-thumbnail"></p>
+                            <h4>we really like wine</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <p><a href="login.php" class="btn btn-default">Read more </a></p>
+                         </div>
+                    </div>
+                        </div>
+            </div>
+                    
+                    <div class ="area">
+                        <div class="container">
+                         <div class="col-md-6 col-xs-6">
+                             <p><img src="img/wine1.png" alt="" class="img-responsive img-thumbnail"></p>
+                            <h4>we really like wine</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <p><a href="login.php" class="btn btn-default">Read more </a></p>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <p><img src="img/wine2.png" alt="" class="img-responsive img-thumbnail"></p>
+                            <h4>we really like wine</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                            <p><a href="login.php" class="btn btn-default">Read more </a></p>
+                        </div>
+                            
+                        </div>
+                    </div>
+             
+        <?php require 'footer.php'; ?>
+        <?php require 'scripts.php'; ?>
        </body>
 </html>

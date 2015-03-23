@@ -1,6 +1,8 @@
 <?php
 class Connection {
+  
     private static $connection = NULL;
+    
     public static function getInstance() {
         if (Connection::$connection === NULL) {
             // connect to the database
