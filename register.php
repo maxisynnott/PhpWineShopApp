@@ -1,7 +1,7 @@
 <?php
 require_once 'Connection.php';
 require_once 'UserTableGateway.php';
-//require_once 'lib/password.php';
+require_once 'lib/password.php';
 
 $connection = Connection::getInstance();
 

@@ -13,12 +13,12 @@
         <div class="container">
             <h2>Registration Form</h2>
             <form id="registerForm" action="register.php" method="POST">
-                <table border="0">
+                <table class="table table-bordered">
                     <tbody>
                         <tr>
                             <td>Username</td>
                             <td>
-                                <input type="text" name="username" value="<?php
+                                <input type="text" name="username" class="form-control" value="<?php
                                     if (isset($_POST) && isset($_POST['username'])) {
                                         echo $_POST['username'];
                                     }
@@ -35,7 +35,7 @@
                         <tr>
                             <td>Password</td>
                             <td>
-                                <input type="password" name="password" value="" />
+                                <input type="password" class="form-control" name="password" value="" />
                                 <span id="passwordError" class="error">
                                     <?php
                                     if (isset($errorMessage) && isset($errorMessage['password'])) {
@@ -48,7 +48,7 @@
                         <tr>
                             <td>Confirm Password</td>
                             <td>
-                                <input type="password" name="password2" value="" />
+                                <input type="password" class="form-control" name="password2" value="" />
                                 <span id="password2Error" class="error">
                                     <?php
                                     if (isset($errorMessage) && isset($errorMessage['password2'])) {
@@ -57,8 +57,7 @@
                                     ?>
                                 </span>
                             </td>
-                        </tr>                
-                        <tr>
+                        </tr>
                             <td></td>
                             <td>
                                 <input type="submit" value="Register" name="register" />

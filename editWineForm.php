@@ -27,12 +27,16 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html>
     <head>
+        <?php require "styles.php" ?>
         <meta charset="UTF-8">
         <title></title>
         <script type="text/javascript" src="js/wine.js"></script>
     </head>
 <body>
-     <?php require 'toolbar.php' ?>
+        <?php require 'toolbar.php' ?>
+        <?php require 'header.php' ?>
+        <?php require 'mainMenu.php' ?>
+        <div class="container">
         <h1>Edit Wine Form</h1>
         <?php
         if (isset($errorMessage)) {
@@ -42,12 +46,13 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
     <div class ="container">
         <form id="editWineForm" name="editWineForm" action="editWine.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
-            <table border="0">
+            <table class="table table-bordered">
                 <tbody>
                     <tr>
+                  
                         <td>Wine</td>
                         <td>
-                            <input type="text" name="wine" value="<?php
+                            <input type="text" name="wine" class="form-control" value="<?php
                                 if (isset($_POST) && isset($_POST['wine'])) {
                                     echo $_POST['wine'];
                                 }
@@ -61,12 +66,12 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                                 }
                                 ?>
                             </span>
-                        </td>
-                    </tr>
+                        </td>                            
+                    </tr>                  
                     <tr>
                         <td>Description</td>
                         <td>
-                            <input type="text" name="description" value="<?php
+                            <input type="text" name="description" class="form-control" value="<?php
                                 if (isset($_POST) && isset($_POST['description'])) {
                                     echo $_POST['description'];
                                 }
@@ -84,7 +89,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                     <tr>
                         <td>Year</td>
                         <td>
-                            <input type="text" name="year" value="<?php
+                            <input type="text" name="year" class="form-control" value="<?php
                                 if (isset($_POST) && isset($_POST['year'])) {
                                     echo $_POST['year'];
                                 }
@@ -102,7 +107,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                     <tr>
                         <td>Temperature</td>
                         <td>
-                            <input type="text" name="temperature" value="<?php
+                            <input type="text" name="temperature" class="form-control" value="<?php
                                 if (isset($_POST) && isset($_POST['temperature'])) {
                                     echo $_POST['temperature'];
                                 }
@@ -120,7 +125,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                     <tr>
                         <td>Type</td>
                         <td>
-                            <input type="text" name="type" value="<?php
+                            <input type="text" name="type" class="form-control" value="<?php
                                 if (isset($_POST) && isset($_POST['type'])) {
                                     echo $_POST['type'];
                                 }
@@ -145,6 +150,9 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
             </table>
 
         </form>
+    </div>
  </div>
+         <?php require 'footer.php'; ?>
+        <?php require 'scripts.php'; ?>
     </body>
 </html>

@@ -26,12 +26,12 @@ Class CommentTableGateway {
  
  
   public function getCommentsByWineId($wineId) {
-        // execute a query to get all computers
+     
         $sqlQuery =
                 "SELECT c.*, p.wine AS wineName
                  FROM comments c
-                 LEFT JOIN wines p ON p.id = c.wine_id
-                 WHERE c.wine_id = :wine_id";
+                 LEFT JOIN wines p ON p.id = c.wineId
+                 WHERE c.wineId = :wine_id";
 
         $params = array(
             "wine_id" => $wineId

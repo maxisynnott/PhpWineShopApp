@@ -62,7 +62,7 @@ if (!isset($username)) {
                         <div class="col-sm-5">
                             <button type="submit" name="loginBtn" id="loginBtn" class="btn btn-success">Login</button>
                             <a href="registerForm.php" class="btn">Register</a>
-                            <a href="forgotPasswordForm.php" class="btn">Forgot Password</a>
+                       
                         </div>
                     </div>
                 </fieldset>

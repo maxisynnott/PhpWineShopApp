@@ -22,7 +22,7 @@ $wineGateway = new WineTableGateway($connection);
 $commentGateway = new CommentTableGateway($connection);
 
 $wines = $wineGateway->getWineById($id);
-$comments = $commentGateway->getCommentById($id);
+$comments = $commentGateway->getCommentsByWineId($id);
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ $comments = $commentGateway->getCommentById($id);
          <table class="table table-bordered">
             <tbody>
                 <?php
-                $row = $statement->fetch(PDO::FETCH_ASSOC);
+                $row = $wines->fetch(PDO::FETCH_ASSOC);
                     echo '<tr>';
                     echo '<td>Wine</td>'
                     . '<td>' . $row['wine'] . '</td>';

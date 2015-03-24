@@ -14,6 +14,7 @@ $statement = $gateway->getWines();
 <!DOCTYPE html>
 <html>
     <head>
+        <?php require "styles.php" ?>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <meta charset="UTF-8">
         <script type="text/javascript" src="js/wine.js"></script>
@@ -22,12 +23,14 @@ $statement = $gateway->getWines();
     <body>
         <div class ="container">
         <?php require 'toolbar.php' ?>
-        <?php
+        <?php require 'header.php' ?>
+        <?php require 'mainMenu.php' ?>
+            <?php
         if (isset($message)) {
             echo '<p>'.$message.'</p>';
         }
         ?>
-        <table class="table table-bordered">
+         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Wine</th>
@@ -51,9 +54,9 @@ $statement = $gateway->getWines();
                     echo '<td>' . $row['type'] . '</td>';
                     echo '<td>'
                     
-                    . '<a href="viewWine.php?id='.$row['id'].'"><button type="button" class="btn btn-warning">View</button></a> '
-                    . '<a href="editWineForm.php?id='.$row['id'].'"><button type="button" class="btn btn-info">Edit</button></a> '
-                    . '<a class="deleteWine" href="deleteWine.php?id='.$row['id'].'"><button type="button" class="btn btn-danger">Delete</button></a> '
+                    . '<a href="viewWine.php?id='.$row['id'].'"><button type="button" class="btn btn-default">View</button></a> '
+                    . '<a href="editWineForm.php?id='.$row['id'].'"><button type="button" btn class="btn btn-default">Edit</button></a> '
+                    . '<a class="deleteWine" href="deleteWine.php?id='.$row['id'].'"><button type="button" class="btn btn-default">Delete</button></a> '
                     . '</td>';
                     echo '</tr>'; 
                     
@@ -65,5 +68,8 @@ $statement = $gateway->getWines();
         </table>
         <p><a href="createWineForm.php"><button type="button" class="btn btn-default">Add A Wine</button></a></p>
         </div>
+        <?php require "styles.php" ?>
+        <?php require 'footer.php'; ?>
+        <?php require 'scripts.php'; ?>
         </body>
 </html>

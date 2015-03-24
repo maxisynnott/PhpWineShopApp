@@ -1,14 +1,17 @@
 window.onload= function() {
 
-    var registerForm = document.getElementById("registerForm");
-    registerForm.addEventListener("submit", validateRegistration);
+    var loginForm = document.getElementById("loginForm");
+    var registerBtn = document.getElementById("registerBtn");
+    var forgotBtn = document.getElementById("forgotBtn");
 
-    function validateRegistration(event) {
+    loginForm.addEventListener("submit", validateLogin);
+    registerBtn.addEventListener("click", onRegisterBtn);
+    forgotBtn.addEventListener("click", onForgotBtn);
+
+    function validateLogin(event) {
         var form = event.target;
         var username = form['username'].value;
         var password = form['password'].value;
-        var password2 = form['password2'].value;
-        
 
         var spanElements = document.getElementsByClassName("error");
         for (var i = 0; i !== spanElements.length; i++) {
@@ -26,18 +29,6 @@ window.onload= function() {
         else if (password.length < 6) {
             errors["password"] = "Password must be at least six characters\n";
         }
-        if (password2 === "") {
-            errors["password2"] = "Confirm Password cannot be empty\n";
-        }
-        else if (password2.length < 6) {
-            errors["password2"] = "Confirm Password must be at least six characters\n";
-            form["password2"].value = "";
-        }
-        else if (password !== password2) {
-            errors["password2"] = "Passwords must match\n";
-            form["password2"].value = "";
-        }
-       
 
         var valid = true;
         for (var index in errors) {
@@ -47,11 +38,17 @@ window.onload= function() {
             spanElement.innerHTML = errorMessage;
 
             form["password"].value = "";
-            form["password2"].value = "";
         }
         if (!valid) {
             event.preventDefault();
         }
     }
 
+    function onRegisterBtn(event) {
+        document.location.href = "registerForm.php";
+    }
+
+    function onForgotBtn(event) {
+        document.location.href = "forgotPasswordForm.php";
+    }
 };

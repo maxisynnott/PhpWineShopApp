@@ -166,8 +166,13 @@ loginbt{
 
 .btn-default{
     color:#ddd;
+}
 
-}.btn-default{
+.btn-success{
+   background-color: #621614;
+}
+
+.btn-default{
     font-family: 'Raleway', sans-serif;
     text-align: center;
     color:#621614;
@@ -175,13 +180,19 @@ loginbt{
     width: 120px;
 }
 
+.spacer {
+    margin-top: 60px; 
+}
 
+.spacer2 {
+    margin-top: 20px; 
+}
 
 /* gives spacing from the text and the images */
 .img-responsive {
 	margin: 0 0 1px 1px;
 
 
-/* this for making the button custom later */
+
 
 

@@ -49,9 +49,9 @@ class WineTableGateway {
     public function getWineById($id) {
         // execute a query to get the user with the specified id
         $sqlQuery =
-                "SELECT w.*, w.wine AS wineryName
+                "SELECT w.*, wnr.name AS wineryName
                  FROM wines w
-                 LEFT JOIN winerys w ON w.id = p.winery_id
+                 LEFT JOIN winery wnr ON wnr.id = w.winery_id
                  WHERE w.id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
@@ -62,7 +62,7 @@ class WineTableGateway {
         $status = $statement->execute($params);
 
         if (!$status) {
-            die("Could not retrieve wines");
+            die("Could not retrieve wine");
         }
 
         return $statement;

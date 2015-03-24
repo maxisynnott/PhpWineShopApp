@@ -19,6 +19,7 @@ $winerys = $wineryGateway->getWinerys();
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <?php require "styles.php" ?>
         <meta charset="UTF-8">
         <title></title>
         <script type="text/javascript" src="js/createWine.js"></script>
@@ -28,7 +29,7 @@ $winerys = $wineryGateway->getWinerys();
          <?php require 'toolbar.php' ?>
          <?php require 'header.php' ?>
          <?php require 'mainMenu.php' ?>
-        <h1>Add A Wine</h1>
+             <h1> Add A Wine</h1>
         <?php
         if (isset($errorMessage)) {
             echo '<p>Error: ' . $errorMessage . '</p>';
@@ -36,7 +37,7 @@ $winerys = $wineryGateway->getWinerys();
         ?>
         
         <form id ="createWineForm" name="createWineForm" action="createWine.php" method="POST">
-            <table border="0">
+            <table class= "table-hover" border="0">
                 <tbody>
                     <tr>
                        <td>Wine</td>
